@@ -18,19 +18,18 @@ package body Spark.Command_Line is
    -- Argument --
    --------------
 
-   function Argument (Number : Positive) return Spark.Strings.SparkString is
-      Result          : Spark.Strings.SparkString;
+   function Argument (Number : Positive) return Argument_Result is
+      Result_S        : Spark.Strings.SparkString;
       Argument_String : constant String := Ada.Command_Line.Argument (Number);
    begin
       if Argument_String'Length <= Spark.Strings.MaxStringLength
         and then Argument_String'Length >= 0
       then
-         Spark.Strings.CopyString (Result, Argument_String);
+         Spark.Strings.CopyString (Result_S, Argument_String);
+         return Argument_Result'(No_Error, Result_S);
       else
-         Spark.Strings.CopyString (Result, "invalid argument");
+         return Argument_Result'(Error => Invalid_Number);
       end if;
-
-      return Result;
    end Argument;
 
    ------------------

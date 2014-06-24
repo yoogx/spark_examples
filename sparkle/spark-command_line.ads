@@ -11,12 +11,24 @@ package Spark.Command_Line with
    --  program, then Argument_Count returns the number of arguments passed to
    --  the program invoking the function. Otherwise it return 0.
 
-   function Argument (Number : Positive) return Strings.SparkString;
+   type Argument_Error is (No_Error, Invalid_Number);
+
+   type Argument_Result (Error: Argument_Error) is
+     record
+        case Error is
+           when No_Error =>
+              The_Argument : Strings.SparkString;
+           when Invalid_Number =>
+              null;
+       end case;
+     end record;
+
+   function Argument (Number : Positive) return Argument_Result;
    --  If the external execution environment supports passing arguments to
    --  a program, then Argument returns an implementation-defined value
    --  corresponding to the argument at relative position Number. If Number
-   --  is outside the range 1 .. Argument_Count, then Constraint_Error is
-   --  propagated.
+   --  is outside the range 1 .. Argument_Count, then an invalid result
+   --  is returned.
 
    function Command_Name return Strings.SparkString;
    --  If the external execution environment supports passing arguments to

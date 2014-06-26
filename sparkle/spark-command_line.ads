@@ -13,15 +13,14 @@ package Spark.Command_Line with
 
    type Argument_Error is (No_Error, Invalid_Number);
 
-   type Argument_Result (Error: Argument_Error) is
-     record
-        case Error is
-           when No_Error =>
-              The_Argument : Strings.SparkString;
-           when Invalid_Number =>
-              null;
-       end case;
-     end record;
+   type Argument_Result (Error : Argument_Error) is record
+      case Error is
+         when No_Error =>
+            The_Argument : Strings.SparkString;
+         when Invalid_Number =>
+            null;
+      end case;
+   end record;
 
    function Argument (Number : Positive) return Argument_Result;
    --  If the external execution environment supports passing arguments to

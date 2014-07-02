@@ -31,23 +31,19 @@ package body Spark.Bubble_Sort with
          Finished := True;
 
          for J in A'First .. I - 1 loop
-            if A (J + 1) < A (J) then
+            if A (J) > A (J + 1) then
                Finished := False;
                Swap (A, J, J + 1);
-               pragma Assert (A (J) < A (J + 1));
             end if;
+            pragma Assert (A (J) <= A (J + 1));
             pragma Loop_Invariant
-              (for all K in A'First .. J =>
-                 (A (K) <= A (J + 1))
-                 and then (if Finished then Is_Sorted (A, A'First, J + 1)));
-
+              (A (J) <= A (J + 1) and then
+                   (for all K in A'First .. J => (A (K) <= A (J + 1))));
          end loop;
          pragma Assert (A (I - 1) <= A (I));
-         pragma Assert (if Finished then Is_Sorted (A, A'First, I));
          pragma Loop_Invariant
-           (A (I - 1) <= A (I)
---           );
-         and then (for all K in I .. A'Last => A (K - 1) <= A (K)));
+           (A (I - 1) <= A (I) and then -- proved
+              (for all K in I .. A'Last => A (K - 1) <= A (K)));
 
          exit when Finished;
 

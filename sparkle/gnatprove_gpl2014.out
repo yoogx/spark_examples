@@ -1,0 +1,137 @@
+gnatprove -Pspark.gpr -j 8 --proof=progressive --report=statistics --timeout=120 *.ad?
+Phase 1 of 3: frame condition computation ...
+Phase 2 of 3: translation to intermediate language ...
+Phase 3 of 3: generation and proof of VCs ...
+analyzing Spark.Command_Line.Argument_Count, 0 checks
+analyzing Spark.Command_Line.Argument, 0 checks
+analyzing Spark.Command_Line.Command_Name, 0 checks
+analyzing Spark.Command_Line.Set_Exit_Status, 0 checks
+analyzing Spark.Strings, 1 checks
+analyzing Spark.Strings.AppendChar, 4 checks
+analyzing Spark.Strings.Substring, 11 checks
+analyzing Spark.Strings.CopyString, 4 checks
+spark-strings.adb:11:41: info: length check proved(0.35s - 1091 steps)
+spark-strings.adb:11:44: warning: range check might fail(0.38s)
+spark-strings.adb:31:54: info: range check proved(0.02s - 8 steps)
+spark-strings.adb:32:24: info: index check proved(0.02s - 16 steps)
+spark-strings.adb:63:32: info: range check proved(0.03s - 9 steps)
+spark-strings.adb:74:34: info: length check proved(0.02s)
+spark-strings.adb:88:45: info: index check proved(0.04s - 59 steps)
+spark-strings.adb:89:32: info: range check proved(0.04s - 48 steps)
+spark-strings.ads:15:51: info: length check proved(0.02s)
+spark-strings.ads:22:7: info: postcondition proved(0.05s - 139 steps)
+spark-strings.ads:26:23: info: index check proved(0.03s - 53 steps)
+spark-strings.ads:34:7: warning: postcondition might fail, requires Pos2 - Pos1 < 0 and Substring'Result.Length = 0) or (Substring'Result.Length = Str.Length and (for all J in Positions range Positions'First .. Substring'Result.Length => (Substring'Result.Text (J) = Str.Text (J)))) or (Substring'Result.Length = (Pos2 - Pos1) + Positions'First and (...(1.49s)
+spark-strings.ads:36:18: info: range check proved(0.05s - 102 steps)
+spark-strings.ads:38:36: info: index check proved(0.07s - 105 steps)
+spark-strings.ads:38:51: info: index check proved(0.07s - 105 steps)
+spark-strings.ads:41:36: info: index check proved(0.06s - 63 steps)
+spark-strings.ads:41:56: info: overflow check proved(0.06s - 118 steps)
+spark-strings.ads:41:60: info: index check proved(0.07s - 143 steps)
+spark-strings.ads:50:8: warning: postcondition might fail, requires DestStr.Text (1 .. SrcStr'Length) = SrcStr(63.08s)
+spark-strings.ads:50:15: info: range check proved(0.04s - 30 steps)
+analyzing Spark.OS_Lib.FOpen_Read, 0 checks
+analyzing Spark.OS_Lib.stdout, 0 checks
+analyzing Spark.OS_Lib.stderr, 0 checks
+analyzing Spark.OS_Lib.fclose, 0 checks
+analyzing Spark.OS_Lib.fopen, 0 checks
+analyzing Spark.OS_Lib.fgetc, 0 checks
+analyzing Spark.OS_Lib.fputc, 0 checks
+analyzing Spark.OS_Lib.feof, 0 checks
+analyzing Spark.OS_Lib.ferror, 0 checks
+analyzing Spark.OS_Lib.OS_Exit, 0 checks
+analyzing Spark.Bubble_Sort.Swap, 1 checks
+analyzing Spark.Bubble_Sort, 0 checks
+analyzing Spark.Bubble_Sort.Sort, 26 checks
+analyzing Spark.Bubble_Sort.Is_Sorted, 3 checks
+spark-bubble_sort.adb:10:7: info: postcondition proved(0.05s - 120 steps)
+spark-bubble_sort.adb:34:29: info: index check proved(0.03s - 76 steps)
+spark-bubble_sort.adb:34:29: info: overflow check proved(0.03s - 76 steps)
+spark-bubble_sort.adb:36:30: info: overflow check proved(0.03s - 93 steps)
+spark-bubble_sort.adb:36:30: info: range check proved(0.03s - 93 steps)
+spark-bubble_sort.adb:39:13: info: loop invariant initialization proved(10.61s - 24541 steps)
+spark-bubble_sort.adb:39:13: info: loop invariant preservation proved(0.29s - 1137 steps)
+spark-bubble_sort.adb:40:48: info: index check proved(0.03s - 70 steps)
+spark-bubble_sort.adb:40:59: info: index check proved(0.03s - 71 steps)
+spark-bubble_sort.adb:40:59: info: overflow check proved(0.03s - 71 steps)
+spark-bubble_sort.adb:44:25: info: index check proved(0.04s - 78 steps)
+spark-bubble_sort.adb:44:51: info: index check proved(0.03s - 78 steps)
+spark-bubble_sort.adb:47:20: info: index check proved(0.03s - 70 steps)
+spark-bubble_sort.adb:47:45: info: index check proved(0.03s - 70 steps)
+spark-bubble_sort.adb:50:42: info: index check proved(0.04s - 74 steps)
+spark-bubble_sort.adb:50:53: info: index check proved(0.03s - 75 steps)
+spark-bubble_sort.adb:50:53: info: overflow check proved(0.03s - 75 steps)
+spark-bubble_sort.adb:53:10: info: loop invariant initialization proved(0.20s - 822 steps)
+spark-bubble_sort.adb:53:10: info: loop invariant preservation proved(7.01s - 19461 steps)
+spark-bubble_sort.adb:54:46: info: index check proved(0.03s - 20 steps)
+spark-bubble_sort.adb:54:46: info: overflow check proved(0.02s - 21 steps)
+spark-bubble_sort.adb:54:57: info: index check proved(0.02s - 20 steps)
+spark-bubble_sort.adb:57:46: info: index check proved(0.03s - 20 steps)
+spark-bubble_sort.adb:61:39: info: index check proved(0.02s - 22 steps)
+spark-bubble_sort.adb:61:50: info: index check proved(0.02s - 22 steps)
+spark-bubble_sort.adb:61:50: info: overflow check proved(0.03s - 23 steps)
+spark-bubble_sort.ads:19:14: info: postcondition proved(0.53s - 1674 steps)
+spark-bubble_sort.ads:28:56: info: index check proved(0.02s - 8 steps)
+spark-bubble_sort.ads:28:67: info: index check proved(0.02s - 8 steps)
+spark-bubble_sort.ads:28:67: info: overflow check proved(0.02s - 7 steps)
+analyzing Spark.Character_Handling, 1 checks
+analyzing Spark.Character_Handling.Is_Control, 0 checks
+analyzing Spark.Character_Handling.Is_Graphic, 0 checks
+analyzing Spark.Character_Handling.Is_Letter, 0 checks
+analyzing Spark.Character_Handling.Is_Lower, 0 checks
+analyzing Spark.Character_Handling.Is_Upper, 0 checks
+analyzing Spark.Character_Handling.Is_Basic, 0 checks
+analyzing Spark.Character_Handling.Is_Digit, 0 checks
+analyzing Spark.Character_Handling.Is_Hexadecimal_Digit, 0 checks
+analyzing Spark.Character_Handling.Is_Alphanumeric, 0 checks
+analyzing Spark.Character_Handling.Is_Special, 0 checks
+analyzing Spark.Character_Handling.To_Lower, 0 checks
+analyzing Spark.Character_Handling.To_Upper, 0 checks
+analyzing Spark.Character_Handling.To_Basic, 0 checks
+analyzing Spark.Character_Handling.LowerCase, 1 checks
+analyzing Spark.Character_Handling.UpperCase, 1 checks
+analyzing Spark.Character_Handling.Is_ISO_646, 0 checks
+analyzing Spark.Character_Handling.To_ISO_646, 1 checks
+spark-character_handling.adb:30:8: info: length check proved(0.26s - 6 steps)
+spark-character_handling.adb:394:20: info: range check proved(0.01s)
+spark-character_handling.adb:477:11: info: range check proved(0.02s - 3 steps)
+spark-character_handling.adb:494:11: info: range check proved(0.02s - 3 steps)
+analyzing Spark.Strings.Maps.Constants, 14 checks
+spark-strings-maps-constants.ads:30:8: info: length check proved(1.34s - 703 steps)
+spark-strings-maps-constants.ads:36:8: info: length check proved(1.20s - 703 steps)
+spark-strings-maps-constants.ads:44:8: info: length check proved(1.20s - 703 steps)
+spark-strings-maps-constants.ads:59:8: info: length check proved(1.19s - 703 steps)
+spark-strings-maps-constants.ads:70:8: info: length check proved(1.39s - 703 steps)
+spark-strings-maps-constants.ads:81:8: info: length check proved(1.55s - 703 steps)
+spark-strings-maps-constants.ads:107:25: info: length check proved(1.55s - 703 steps)
+spark-strings-maps-constants.ads:111:8: info: length check proved(1.56s - 703 steps)
+spark-strings-maps-constants.ads:118:8: info: length check proved(1.36s - 703 steps)
+spark-strings-maps-constants.ads:134:8: info: length check proved(1.15s - 703 steps)
+spark-strings-maps-constants.ads:156:8: info: length check proved(1.42s - 703 steps)
+spark-strings-maps-constants.ads:161:8: info: length check proved(1.29s - 703 steps)
+spark-strings-maps-constants.ads:468:8: info: length check proved(1.26s - 703 steps)
+spark-strings-maps-constants.ads:776:8: info: length check proved(1.21s - 703 steps)
+analyzing Spark.Type_Image, 0 checks
+analyzing Spark.Type_Image.Boolean_Image, 2 checks
+analyzing Spark.Type_Image.Integer_Image, 9 checks
+spark-type_image.adb:14:17: info: precondition proved(0.03s - 32 steps)
+spark-type_image.adb:16:17: info: precondition proved(0.03s - 31 steps)
+spark-type_image.adb:32:15: info: overflow check proved(0.02s - 4 steps)
+spark-type_image.adb:47:69: info: division check proved(0.03s - 18 steps)
+spark-type_image.adb:48:31: info: division check proved(0.03s - 22 steps)
+spark-type_image.adb:50:10: info: loop invariant initialization proved(0.02s - 21 steps)
+spark-type_image.adb:50:10: info: loop invariant preservation proved(0.03s - 52 steps)
+spark-type_image.adb:56:70: info: division check proved(0.02s - 2 steps)
+spark-type_image.adb:59:39: info: range check proved(0.12s - 298 steps)
+spark-type_image.adb:63:24: info: precondition proved(0.08s - 160 steps)
+spark-type_image.adb:63:57: info: range check proved(0.08s - 199 steps)
+analyzing Spark.Strings.Maps.Equal_Op, 0 checks
+analyzing Spark.Strings.Maps.Not_Op, 0 checks
+analyzing Spark.Strings.Maps.And_Op, 0 checks
+analyzing Spark.Strings.Maps.Or_Op, 0 checks
+analyzing Spark.Strings.Maps.Xor_Op, 0 checks
+analyzing Spark.Strings.Maps.Minus_Op, 0 checks
+analyzing Spark.Strings.Maps.Is_In, 0 checks
+analyzing Spark.Strings.Maps.Is_Subset, 0 checks
+analyzing Spark.Strings.Maps.Value, 0 checks
+Summary logged in /home/hugues/Dev/spark_examples/sparkle/gnatprove/gnatprove.out

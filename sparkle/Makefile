@@ -9,4 +9,4 @@ clean:
 	-rm -rf *~
 
 distclean: clean
-	-rm -rf gnatprove auto.cgpr
+	-rm -rf gnatprove auto.cgpr spark-loc.xml gnatinspect.db

@@ -30,20 +30,35 @@ package body Spark.Bubble_Sort with
       for I in reverse A'First + 1 .. A'Last loop
          Finished := True;
 
-         for J in A'First .. I - 1 loop
+         Inner : for J in A'First .. I - 1 loop
             if A (J) > A (J + 1) then
                Finished := False;
                Swap (A, J, J + 1);
             end if;
-            pragma Assert (A (J) <= A (J + 1));
+
             pragma Loop_Invariant
-              (A (J) <= A (J + 1) and then
-                   (for all K in A'First .. J => (A (K) <= A (J + 1))));
-         end loop;
-         pragma Assert (A (I - 1) <= A (I));
+              (for all K in A'First .. J => A (K) <= A (J + 1));
+            pragma Loop_Invariant
+              (for all K1 in A'First .. I =>
+                 (for some K2 in A'First .. I =>
+                      A(K1) = A'Loop_Entry(Inner)(K2)));
+            pragma Loop_Invariant
+              (for all K in I+1 .. A'Last =>
+                 A(K) = A'Loop_Entry(Inner)(K));
+            pragma Loop_Invariant
+              (if Finished then (for all K in A'First .. J
+                                   => A (K) <= A (K + 1)));
+         end loop Inner;
+
          pragma Loop_Invariant
-           (A (I - 1) <= A (I) and then -- proved
-              (for all K in I .. A'Last => A (K - 1) <= A (K)));
+           (for all K in I .. A'Last => A (K - 1) <= A (K));
+
+         pragma Loop_Invariant
+           (for all K in A'First .. I-1 => A(K) <= A(I));
+
+         pragma Loop_Invariant
+           (if Finished then (for all K in A'First .. I - 1
+                                => A (K) <= A (K + 1)));
 
          exit when Finished;
 

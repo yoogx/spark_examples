@@ -1,8 +1,5 @@
-bb:
-	gnatprove -Pspark.gpr --proof=progressive --report=fail --timeout=10 spark-bubble_sort.adb
-
 spark:
-	gnatprove -Pspark.gpr *.ad?
+	gnatprove -Pspark.gpr -j 8 --proof=progressive --report=statistics --timeout=120 *.ad?
 
 pp:
 	gnatpp -Pspark.gpr -rnb

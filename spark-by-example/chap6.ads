@@ -59,23 +59,23 @@ package Chap6 with
       B       : in out T_Arr;
       B_Index :        Integer;
       Length  :        Integer) with
-     Pre =>
+      Pre =>
       (A'Length > 0 and
        B'Length > 0 and
        A_Index >= A'First and
        B_Index >= B'First and
-       Length  > 0 and
+       Length > 0 and
        Length <= A'Length and
        Length <= B'Length and
        A_Index < A'Last - Length and
        B_Index + Length < B'Last),
       Post =>
-        (for all J in 0 .. Length - 1 => A (A_Index + J) = B (B_Index + J));
-        --  XXX GNATProve GPL 2014: the following post-condition leads to
-        --  invalid Why3 code being emmitted
-        --
-        --         (B (B_Index .. B_Index + Length - 1) = A (A_Index
-        --  .. A_Index + Length - 1));
+      (for all J in 0 .. Length - 1 => A (A_Index + J) = B (B_Index + J));
+      --  XXX GNATProve GPL 2014: the following post-condition leads to
+      --  invalid Why3 code being emmitted
+      --
+      --         (B (B_Index .. B_Index + Length - 1) = A (A_Index
+      --  .. A_Index + Length - 1));
 
       --  6.5 The reverse_copy Algorithm
       --

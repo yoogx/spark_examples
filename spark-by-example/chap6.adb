@@ -65,7 +65,7 @@ package body Chap6 with
    ------------------
 
    function Reverse_Copy (X : T_Arr) return T_Arr is
-      Result : T_Arr (X'First .. X'Last);
+      Result : T_Arr (X'First .. X'Last) := (others => 0);
    begin
       for J in Result'Range loop
          Result (J) := X (X'Last - J + X'First);
